@@ -18,6 +18,7 @@ namespace Ghtk.Api.Controllers
         [Authorize]
         public IActionResult CreateOrder([FromBody] CreateOrder shipment)
         {
+            Console.WriteLine("hahaaaaaaa");
             return Ok();
         }
     }
