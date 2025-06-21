@@ -15,7 +15,8 @@ namespace Ghtk.Api
             builder.Services.AddAuthentication("X-Client-Source")
                 .AddXClientSourceAuthentication(options =>
                 {
-                    options.ValidateClientSource = clientSource => clientSource == "ghtk";
+                    options.ClientValidator = (clientSource, token, principal) => true;
+                    options.IssuerSigningKey = builder.Configuration["IssuerSigningKey"] ?? ""; // Replace with your actual signing key
                 });
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
